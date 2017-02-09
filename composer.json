@@ -2,7 +2,7 @@
     "name": "nystudio107/craft3-cookies",
     "description": "A simple plugin for setting and getting cookies from within Craft CMS templates.",
     "type": "craft-plugin",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "keywords": [
         "craft",
         "cms",
@@ -10,6 +10,10 @@
         "craft-plugin",
         "cookies"
     ],
+    "support": {
+        "docs": "https://github.com/nystudio107/craft-3cookies/blob/craft3/README.md",
+        "issues": "https://github.com/nystudio107/craft-3cookies/issues"
+    },
     "license": "MIT",
     "authors": [
         {
@@ -27,14 +31,9 @@
     "extra": {
         "name": "Cookies",
         "handle": "cookies",
-        "version": "1.1.0",
         "schemaVersion": "1.0.0",
         "hasSettings": false,
         "hasCpSection": false,
-        "developer": "nystudio107",
-        "developerUrl": "https://nystudio107.com",
-        "description": "A simple plugin for setting and getting cookies from within Craft CMS templates.",
-        "documentationUrl": "https://github.com/nystudio107/craft-3cookies/blob/craft3/README.md",
         "changelogUrl": "https://raw.githubusercontent.com/nystudio107/craft3-cookies/CHANGELOG.md",
         "class": "nystudio107\\cookies\\Cookies",
         "components": {
