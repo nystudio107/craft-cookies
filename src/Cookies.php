@@ -24,20 +24,22 @@ use Craft;
 class Cookies extends \craft\base\Plugin
 {
     /**
-     * Static property that is an instance of this plugin class so that it can be accessed via Cookies::$plugin
-     * @var craft\plugins\cookies\Cookies
+     * Static property that is an instance of this plugin class so that it can
+     * be accessed via Cookies::$plugin
+     *
+     * @var static
      */
     public static $plugin;
 
     /**
-     * Set our $plugin static property to this class so that it can be accessed via
-     * Cookies::$plugin
+     * Set our $plugin static property to this class so that it can be accessed
+     * via Cookies::$plugin
      *
-     * Called after the plugin class is instantiated; do any one-time initialization
-     * here such as hooks and events.
+     * Called after the plugin class is instantiated; do any one-time
+     * initialization here such as hooks and events.
      *
-     * If you have a '/vendor/autoload.php' file, it will be loaded for you automatically;
-     * you do not need to load it in your init() method.
+     * If you have a '/vendor/autoload.php' file, it will be loaded for you
+     * automatically; you do not need to load it in your init() method.
      */
     public function init()
     {
@@ -50,21 +52,18 @@ class Cookies extends \craft\base\Plugin
     }
 
     /**
-     * Returns the user-facing name of the plugin, which can override the name in
-     * plugin.json
+     * Returns the user-facing name of the plugin, which can override the name
+     * in composer.json
      *
-     * @return mixed
+     * @return string
      */
     public function getName()
     {
-         return Craft::t('cookies', 'Cookies');
+        return Craft::t('cookies', 'Cookies');
     }
 
     /**
-     * Returns the component definition that should be registered on the [[\craft\app\web\twig\variables\CraftVariable]] instance for this plugin’s handle.
-     *
-     * @return mixed|null The component definition to be registered.
-     * It can be any of the formats supported by [[\yii\di\ServiceLocator::set()]].
+     * @inheritdoc
      */
     public function defineTemplateComponent()
     {

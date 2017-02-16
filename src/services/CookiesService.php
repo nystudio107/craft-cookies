@@ -12,6 +12,8 @@ namespace nystudio107\cookies\services;
 use Craft;
 use craft\base\Component;
 
+use yii\web\Cookie;
+
 /**
  * Cookies service
  *
@@ -24,82 +26,107 @@ class CookiesService extends Component
 
     /**
      * Set a cookie
-     * @param string  $name     [description]
-     * @param string  $value    [description]
-     * @param integer $expire   [description]
-     * @param string  $path     [description]
-     * @param string  $domain   [description]
-     * @param boolean $secure   [description]
-     * @param boolean $httponly [description]
+     *
+     * @param string $name
+     * @param string $value
+     * @param int    $expire
+     * @param string $path
+     * @param string $domain
+     * @param bool   $secure
+     * @param bool   $httpOnly
      */
-    public function set($name = "", $value = "", $expire = 0, $path = "/", $domain = "", $secure = false, $httponly = false)
-    {
-        $expire = (int) $expire;
-/* -- Make sure the cookie expiry is in the past if we're deleting the cookie */
-        if ($value=="")
+    public function set(
+        $name = "",
+        $value = "",
+        $expire = 0,
+        $path = "/",
+        $domain = "",
+        $secure = false,
+        $httpOnly = false
+    ) {
+        $expire = (int)$expire;
+        // Make sure the cookie expiry is in the past if we're deleting the cookie
+        if ($value == "") {
             $expire = (int)(time() - 3600);
-        setcookie($name, $value, $expire, $path, $domain, $secure, $httponly);
+        }
+        setcookie($name, $value, $expire, $path, $domain, $secure, $httpOnly);
         $_COOKIE[$name] = $value;
-     } /* -- set */
+    }
 
     /**
      * Get a cookie
-     * @param  string $name [description]
-     * @return string       [description]
+     *
+     * @param string $name
+     *
+     * @return mixed
      */
     public function get($name = "")
     {
-        if(isset($_COOKIE[$name]))
-            return $_COOKIE[$name];
-    } /* -- get */
+        $result = "";
+        if (isset($_COOKIE[$name])) {
+            $result =  $_COOKIE[$name];
+        }
+        return $result;
+    }
 
     /**
      * Set a secure cookie
-     * @param string  $name     [description]
-     * @param string  $value    [description]
-     * @param integer $expire   [description]
-     * @param string  $path     [description]
-     * @param string  $domain   [description]
-     * @param boolean $secure   [description]
-     * @param boolean $httponly [description]
+     *
+     * @param string $name
+     * @param string $value
+     * @param int    $expire
+     * @param string $path
+     * @param string $domain
+     * @param bool   $secure
+     * @param bool   $httpOnly
      */
-    public function setSecure($name = "", $value = "", $expire = 0, $path = "/", $domain = "", $secure = false, $httponly = false)
-    {
-        if ($name == "")
-        {
+    public function setSecure(
+        $name = "",
+        $value = "",
+        $expire = 0,
+        $path = "/",
+        $domain = "",
+        $secure = false,
+        $httpOnly = false
+    ) {
+        if ($name == "") {
             Craft::$app->request->cookies->delete($name);
-        }
-        else
-        {
-            $expire = (int) $expire;
-/* -- Make sure the cookie expiry is in the past if we're deleting the cookie */
-            if ($value=="")
+        } else {
+            $expire = (int)$expire;
+            // Make sure the cookie expiry is in the past if we're deleting the cookie
+            if ($value == "") {
                 $expire = (int)(time() - 3600);
-            $cookie = new HttpCookie($name, '');
+            }
+            $cookie = new Cookie($name, '');
 
             $cookie->value = Craft::$app->security->hashData(base64_encode(serialize($value)));
             $cookie->expire = $expire;
             $cookie->path = $path;
             $cookie->domain = $domain;
             $cookie->secure = $secure;
-            $cookie->httpOnly = $httponly;
+            $cookie->httpOnly = $httpOnly;
 
-            Craft::$app->request->cookies->add($cookie->name, $cookie);
+            Craft::$app->request->cookies->add($cookie);
         }
-    } /* -- setSecure */
+    }
 
     /**
      * Get a secure cookie
-     * @param  string $name [description]
-     * @return string       [description]
+     *
+     * @param string $name
+     *
+     * @return mixed
      */
     public function getSecure($name = "")
     {
+        $result = "";
         $cookie = Craft::$app->request->cookies->get($name);
-        if ($cookie && !empty($cookie->value) && ($data = Craft::$app->security->validateData($cookie->value)) !== false)
-        {
-            return @unserialize(base64_decode($data));
+        if ($cookie
+            && !empty($cookie->value)
+            && ($data = Craft::$app->security->validateData($cookie->value)) !== false
+        ) {
+            $result = @unserialize(base64_decode($data));
         }
-    } /* -- getSecure */
-
-} /* -- CookiesService */
+        return $result;
+    }
+}
