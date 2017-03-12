@@ -9,37 +9,31 @@
 
 namespace nystudio107\cookies;
 
+use nystudio107\cookies\services\CookiesService;
 use nystudio107\cookies\twigextensions\CookiesTwigExtension;
 use nystudio107\cookies\variables\CookiesVariable;
 
 use Craft;
+use craft\base\Plugin;
 
 /**
- * Cookies plugin base class
+ * Class Cookies
  *
  * @author    nystudio107
  * @package   Cookies
  * @since     1.1.0
+ *
+ * @property  CookiesService    cookies
  */
-class Cookies extends \craft\base\Plugin
+class Cookies extends Plugin
 {
     /**
-     * Static property that is an instance of this plugin class so that it can
-     * be accessed via Cookies::$plugin
-     *
-     * @var static
+     * @var Cookies
      */
     public static $plugin;
 
     /**
-     * Set our $plugin static property to this class so that it can be accessed
-     * via Cookies::$plugin
-     *
-     * Called after the plugin class is instantiated; do any one-time
-     * initialization here such as hooks and events.
-     *
-     * If you have a '/vendor/autoload.php' file, it will be loaded for you
-     * automatically; you do not need to load it in your init() method.
+     * @inheritdoc
      */
     public function init()
     {
@@ -69,5 +63,4 @@ class Cookies extends \craft\base\Plugin
     {
         return CookiesVariable::class;
     }
-
 }
