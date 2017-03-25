@@ -43,6 +43,15 @@ class Cookies extends Plugin
 
         // Add in our Twig extensions
         Craft::$app->view->twig->addExtension(new CookiesTwigExtension());
+
+        Craft::info(
+            Craft::t(
+                'cookies',
+                '{name} plugin loaded',
+                ['name' => $this->name]
+            ),
+            __METHOD__
+        );
     }
 
     /**
