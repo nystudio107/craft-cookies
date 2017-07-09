@@ -15,6 +15,10 @@ use nystudio107\cookies\variables\CookiesVariable;
 
 use Craft;
 use craft\base\Plugin;
+use craft\events\DefineComponentsEvent;
+use craft\web\twig\variables\CraftVariable;
+
+use yii\base\Event;
 
 /**
  * Class Cookies
@@ -41,6 +45,14 @@ class Cookies extends Plugin
         self::$plugin = $this;
         $this->name = $this->getName();
 
+        Event::on(
+            CraftVariable::class,
+            CraftVariable::EVENT_DEFINE_COMPONENTS,
+            function (DefineComponentsEvent $event) {
+                $event->components['cookies'] = CookiesVariable::class;
+            }
+        );
+
         // Add in our Twig extensions
         Craft::$app->view->twig->addExtension(new CookiesTwigExtension());
 
@@ -63,13 +75,5 @@ class Cookies extends Plugin
     public function getName()
     {
         return Craft::t('cookies', 'Cookies');
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function defineTemplateComponent()
-    {
-        return CookiesVariable::class;
     }
 }

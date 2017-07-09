@@ -1,5 +1,9 @@
 # Cookies Changelog
 
+## 1.1.5 - 2017.07.09
+### Changed
+* Craft 3 beta 20 compatibility
+
 ## 1.1.4 - 2017.03.24
 ### Changed
 * `hasSettings` -> `hasCpSettings` for Craft 3 beta 8 compatibility
