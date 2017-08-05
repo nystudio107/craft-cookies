@@ -1,5 +1,9 @@
 # Cookies Changelog
 
+## 1.1.6 - 2017.08.05
+### Changed
+* Craft 3 beta 23 compatibility
+
 ## 1.1.5 - 2017.07.09
 ### Changed
 * Craft 3 beta 20 compatibility

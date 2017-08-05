@@ -15,7 +15,6 @@ use nystudio107\cookies\variables\CookiesVariable;
 
 use Craft;
 use craft\base\Plugin;
-use craft\events\DefineComponentsEvent;
 use craft\web\twig\variables\CraftVariable;
 
 use yii\base\Event;
@@ -47,9 +46,11 @@ class Cookies extends Plugin
 
         Event::on(
             CraftVariable::class,
-            CraftVariable::EVENT_DEFINE_COMPONENTS,
-            function (DefineComponentsEvent $event) {
-                $event->components['cookies'] = CookiesVariable::class;
+            CraftVariable::EVENT_INIT,
+            function (Event $event) {
+                /** @var CraftVariable $variable */
+                $variable = $event->sender;
+                $variable->set('cookies', CookiesVariable::class);
             }
         );
 
