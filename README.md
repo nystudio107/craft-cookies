@@ -6,6 +6,10 @@ Related: [Cookies for Craft 2.x](https://github.com/nystudio107/cookies)
 
 This plugin is inspired the [Lj_cookies](https://github.com/lewisjenkins/craft-lj-cookies) plugin, and functions similarly, but adds the ability to get and set secure cookies using the craft->security() framework, and it also provides Twig filters and functions as well as Craft variables for setting & getting cookies.
 
+## Requirements
+
+This plugin requires Craft CMS 3.0.0-RC1 or later.
+
 **Installation**
 
 1. Install with Composer via `composer require nystudio107/craft3-cookies` from your project directory
