@@ -2,7 +2,7 @@
     "name": "nystudio107/craft3-cookies",
     "description": "A simple plugin for setting and getting cookies from within Craft CMS templates.",
     "type": "craft-plugin",
-    "version": "1.1.6",
+    "version": "1.1.7",
     "keywords": [
         "craft",
         "cms",
@@ -22,7 +22,7 @@
         }
     ],
     "require": {
-        "craftcms/cms": "~3.0.0-beta.23"
+        "craftcms/cms": "^3.0.0-RC1"
     },
     "autoload": {
         "psr-4": {
