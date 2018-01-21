@@ -44,13 +44,13 @@ class CookiesService extends Component
         $secure = false,
         $httpOnly = false
     ) {
-        $expire = (int)$expire;
-        // Make sure the cookie expiry is in the past if we're deleting the cookie
         if ($value == "") {
-            $expire = (int)(time() - 3600);
+            Craft::$app->response->cookies->delete($name);
+        } else {
+            $expire = (int)$expire;
+            setcookie($name, $value, $expire, $path, $domain, $secure, $httpOnly);
+            $_COOKIE[$name] = $value;
         }
-        setcookie($name, $value, $expire, $path, $domain, $secure, $httpOnly);
-        $_COOKIE[$name] = $value;
     }
 
     /**
@@ -89,15 +89,11 @@ class CookiesService extends Component
         $secure = false,
         $httpOnly = false
     ) {
-        if ($name == "") {
-            Craft::$app->request->cookies->delete($name);
+        if ($value == "") {
+            Craft::$app->response->cookies->delete($name);
         } else {
             $expire = (int)$expire;
-            // Make sure the cookie expiry is in the past if we're deleting the cookie
-            if ($value == "") {
-                $expire = (int)(time() - 3600);
-            }
-            $cookie = new Cookie($name, '');
+            $cookie = new Cookie(['name' => $name, 'value' => '']);
 
             $cookie->value = Craft::$app->security->hashData(base64_encode(serialize($value)));
             $cookie->expire = $expire;
@@ -106,7 +102,7 @@ class CookiesService extends Component
             $cookie->secure = $secure;
             $cookie->httpOnly = $httpOnly;
 
-            Craft::$app->request->cookies->add($cookie);
+            Craft::$app->response->cookies->add($cookie);
         }
     }
 
