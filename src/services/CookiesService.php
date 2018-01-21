@@ -45,7 +45,7 @@ class CookiesService extends Component
         $httpOnly = false
     ) {
         if ($value == "") {
-            Craft::$app->response->cookies->delete($name);
+            Craft::$app->response->cookies->remove($name);
         } else {
             $expire = (int)$expire;
             setcookie($name, $value, $expire, $path, $domain, $secure, $httpOnly);
@@ -90,7 +90,7 @@ class CookiesService extends Component
         $httpOnly = false
     ) {
         if ($value == "") {
-            Craft::$app->response->cookies->delete($name);
+            Craft::$app->response->cookies->remove($name);
         } else {
             $expire = (int)$expire;
             $cookie = new Cookie(['name' => $name, 'value' => '']);
