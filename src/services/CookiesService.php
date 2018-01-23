@@ -12,6 +12,8 @@ namespace nystudio107\cookies\services;
 use Craft;
 use craft\base\Component;
 
+use yii\base\Exception;
+use yii\base\InvalidConfigException;
 use yii\web\Cookie;
 
 /**
@@ -44,13 +46,13 @@ class CookiesService extends Component
         $secure = false,
         $httpOnly = false
     ) {
-        $expire = (int)$expire;
-        // Make sure the cookie expiry is in the past if we're deleting the cookie
-        if ($value == "") {
-            $expire = (int)(time() - 3600);
+        if (empty($value)) {
+            Craft::$app->response->cookies->remove($name);
+        } else {
+            $expire = (int)$expire;
+            setcookie($name, $value, $expire, $path, $domain, $secure, $httpOnly);
+            $_COOKIE[$name] = $value;
         }
-        setcookie($name, $value, $expire, $path, $domain, $secure, $httpOnly);
-        $_COOKIE[$name] = $value;
     }
 
     /**
@@ -64,8 +66,9 @@ class CookiesService extends Component
     {
         $result = "";
         if (isset($_COOKIE[$name])) {
-            $result =  $_COOKIE[$name];
+            $result = $_COOKIE[$name];
         }
+
         return $result;
     }
 
@@ -89,24 +92,36 @@ class CookiesService extends Component
         $secure = false,
         $httpOnly = false
     ) {
-        if ($name == "") {
-            Craft::$app->request->cookies->delete($name);
+        if (empty($value)) {
+            Craft::$app->response->cookies->remove($name);
         } else {
             $expire = (int)$expire;
-            // Make sure the cookie expiry is in the past if we're deleting the cookie
-            if ($value == "") {
-                $expire = (int)(time() - 3600);
-            }
-            $cookie = new Cookie($name, '');
+            $cookie = new Cookie(['name' => $name, 'value' => '']);
 
-            $cookie->value = Craft::$app->security->hashData(base64_encode(serialize($value)));
+            try {
+                $cookie->value = Craft::$app->security->hashData(base64_encode(serialize($value)));
+            } catch (InvalidConfigException $e) {
+                Craft::error(
+                    'Error setting secure cookie: '.$e->getMessage(),
+                    __METHOD__
+                );
+
+                return;
+            } catch (Exception $e) {
+                Craft::error(
+                    'Error setting secure cookie: '.$e->getMessage(),
+                    __METHOD__
+                );
+
+                return;
+            }
             $cookie->expire = $expire;
             $cookie->path = $path;
             $cookie->domain = $domain;
             $cookie->secure = $secure;
             $cookie->httpOnly = $httpOnly;
 
-            Craft::$app->request->cookies->add($cookie);
+            Craft::$app->response->cookies->add($cookie);
         }
     }
 
@@ -121,12 +136,28 @@ class CookiesService extends Component
     {
         $result = "";
         $cookie = Craft::$app->request->cookies->get($name);
+        try {
+            $data = Craft::$app->security->validateData($cookie->value);
+        } catch (InvalidConfigException $e) {
+            Craft::error(
+                'Error getting secure cookie: '.$e->getMessage(),
+                __METHOD__
+            );
+            $data = false;
+        } catch (Exception $e) {
+            Craft::error(
+                'Error getting secure cookie: '.$e->getMessage(),
+                __METHOD__
+            );
+            $data = false;
+        }
         if ($cookie
             && !empty($cookie->value)
-            && ($data = Craft::$app->security->validateData($cookie->value)) !== false
+            && $data !== false
         ) {
             $result = @unserialize(base64_decode($data));
         }
+
         return $result;
     }
 }

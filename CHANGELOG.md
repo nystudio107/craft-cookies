@@ -1,5 +1,10 @@
 # Cookies Changelog
 
+## 1.1.8 - 2017.01.23
+### Changed
+* Fixed an issue with removing cookies
+* Added try/catch so errors are logged instead of exceptions thrown
+
 ## 1.1.7 - 2017.12.06
 ### Changed
 * Updated to require craftcms/cms `^3.0.0-RC1`
