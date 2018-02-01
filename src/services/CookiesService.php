@@ -136,26 +136,28 @@ class CookiesService extends Component
     {
         $result = "";
         $cookie = Craft::$app->request->cookies->get($name);
-        try {
-            $data = Craft::$app->security->validateData($cookie->value);
-        } catch (InvalidConfigException $e) {
-            Craft::error(
-                'Error getting secure cookie: '.$e->getMessage(),
-                __METHOD__
-            );
-            $data = false;
-        } catch (Exception $e) {
-            Craft::error(
-                'Error getting secure cookie: '.$e->getMessage(),
-                __METHOD__
-            );
-            $data = false;
-        }
-        if ($cookie
-            && !empty($cookie->value)
-            && $data !== false
-        ) {
-            $result = @unserialize(base64_decode($data));
+        if (!empty($cookie)) {
+            try {
+                $data = Craft::$app->security->validateData($cookie->value);
+            } catch (InvalidConfigException $e) {
+                Craft::error(
+                    'Error getting secure cookie: '.$e->getMessage(),
+                    __METHOD__
+                );
+                $data = false;
+            } catch (Exception $e) {
+                Craft::error(
+                    'Error getting secure cookie: '.$e->getMessage(),
+                    __METHOD__
+                );
+                $data = false;
+            }
+            if ($cookie
+                && !empty($cookie->value)
+                && $data !== false
+            ) {
+                $result = @unserialize(base64_decode($data));
+            }
         }
 
         return $result;

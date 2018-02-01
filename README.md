@@ -12,7 +12,7 @@ This plugin requires Craft CMS 3.0.0-RC1 or later.
 
 **Installation**
 
-1. Install with Composer via `composer require nystudio107/craft3-cookies` from your project directory
+1. Install with Composer via `composer require nystudio107/craft-cookies` from your project directory
 2. Install plugin in the Craft Control Panel under Settings > Plugins
 
 ## Setting cookies
