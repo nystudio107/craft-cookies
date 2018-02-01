@@ -1,5 +1,10 @@
 # Cookies Changelog
 
+## 1.1.9 - 2017.02.01
+### Changed
+* Renamed the composer package name to `craft-cookies`
+* Check to ensure a cookie exists before accessing it in `getSecure()`
+
 ## 1.1.8 - 2017.01.23
 ### Changed
 * Fixed an issue with removing cookies
