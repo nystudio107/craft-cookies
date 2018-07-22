@@ -1,5 +1,11 @@
 # Cookies Changelog
 
+## 1.1.10 - 2017.07.22
+### Changed
+* If the passed in domain is empty, use the `defaultCookieDomain` config setting
+* Don't unserialize any classes in secure cookie data
+* Code cleanup
+
 ## 1.1.9 - 2017.02.01
 ### Changed
 * Renamed the composer package name to `craft-cookies`
