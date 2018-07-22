@@ -49,7 +49,7 @@ class CookiesService extends Component
         if (empty($value)) {
             Craft::$app->response->cookies->remove($name);
         } else {
-            $domain = $domain ?? Craft::$app->getConfig()->getGeneral()->defaultCookieDomain ?? '';
+            $domain = empty($domain) ? Craft::$app->getConfig()->getGeneral()->defaultCookieDomain : $domain;
             $expire = (int)$expire;
             setcookie($name, $value, $expire, $path, $domain, $secure, $httpOnly);
             $_COOKIE[$name] = $value;
@@ -96,7 +96,7 @@ class CookiesService extends Component
         if (empty($value)) {
             Craft::$app->response->cookies->remove($name);
         } else {
-            $domain = $domain ?? Craft::$app->getConfig()->getGeneral()->defaultCookieDomain ?? '';
+            $domain = empty($domain) ? Craft::$app->getConfig()->getGeneral()->defaultCookieDomain : $domain;
             $expire = (int)$expire;
             $cookie = new Cookie(['name' => $name, 'value' => '']);
 
