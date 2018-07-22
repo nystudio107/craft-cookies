@@ -38,17 +38,18 @@ class CookiesService extends Component
      * @param bool   $httpOnly
      */
     public function set(
-        $name = "",
-        $value = "",
+        $name = '',
+        $value = '',
         $expire = 0,
-        $path = "/",
-        $domain = "",
+        $path = '/',
+        $domain = '',
         $secure = false,
         $httpOnly = false
     ) {
         if (empty($value)) {
             Craft::$app->response->cookies->remove($name);
         } else {
+            $domain = $domain ?? Craft::$app->getConfig()->getGeneral()->defaultCookieDomain ?? '';
             $expire = (int)$expire;
             setcookie($name, $value, $expire, $path, $domain, $secure, $httpOnly);
             $_COOKIE[$name] = $value;
@@ -62,9 +63,9 @@ class CookiesService extends Component
      *
      * @return mixed
      */
-    public function get($name = "")
+    public function get($name = '')
     {
-        $result = "";
+        $result = '';
         if (isset($_COOKIE[$name])) {
             $result = $_COOKIE[$name];
         }
@@ -84,17 +85,18 @@ class CookiesService extends Component
      * @param bool   $httpOnly
      */
     public function setSecure(
-        $name = "",
-        $value = "",
+        $name = '',
+        $value = '',
         $expire = 0,
-        $path = "/",
-        $domain = "",
+        $path = '/',
+        $domain = '',
         $secure = false,
         $httpOnly = false
     ) {
         if (empty($value)) {
             Craft::$app->response->cookies->remove($name);
         } else {
+            $domain = $domain ?? Craft::$app->getConfig()->getGeneral()->defaultCookieDomain ?? '';
             $expire = (int)$expire;
             $cookie = new Cookie(['name' => $name, 'value' => '']);
 
@@ -132,11 +134,11 @@ class CookiesService extends Component
      *
      * @return mixed
      */
-    public function getSecure($name = "")
+    public function getSecure($name = '')
     {
-        $result = "";
+        $result = '';
         $cookie = Craft::$app->request->cookies->get($name);
-        if (!empty($cookie)) {
+        if ($cookie !== null) {
             try {
                 $data = Craft::$app->security->validateData($cookie->value);
             } catch (InvalidConfigException $e) {
@@ -156,7 +158,7 @@ class CookiesService extends Component
                 && !empty($cookie->value)
                 && $data !== false
             ) {
-                $result = @unserialize(base64_decode($data));
+                $result = @unserialize(base64_decode($data), false);
             }
         }
 
