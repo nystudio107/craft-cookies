@@ -24,10 +24,10 @@ You can also install Cookies via the **Plugin Store** in the Craft AdminCP.
 All three of these methods accomplish the same thing:
 
     {# Set the cookie using 'setCookie' function #}
-    {{ setCookie( NAME, VALUE, DURATION, PATH, DOMAIN, SECURE, HTTPONLY) }}
+    {% do setCookie( NAME, VALUE, DURATION, PATH, DOMAIN, SECURE, HTTPONLY) %}
 
     {# Set the cookie using 'setCookie' filter #}
-    {{ NAME | setCookie( VALUE, DURATION, PATH, DOMAIN, SECURE, HTTPONLY) }}
+    {% do NAME | setCookie( VALUE, DURATION, PATH, DOMAIN, SECURE, HTTPONLY) %}
 
     {# Set the cookie using 'set' variable #}
     {% do craft.cookies.set( NAME, VALUE, DURATION, PATH, DOMAIN, SECURE, HTTPONLY) %}
@@ -40,10 +40,10 @@ All of the parameters except for `NAME` are optional.  The `PATH` defaults to `/
 
 **Examples**
 
-    {{ setCookie('marvin', 'martian', now | date_modify("+1 hour").timestamp ) }}
+    {% do setCookie('marvin', 'martian', now | date_modify("+1 hour").timestamp) %}
     {# Sets a cookie to expire in an hour. #}
 
-    {% 'marvin' | setCookie('martian', now | date_modify("+30 days").timestamp ) %}
+    {% do 'marvin' | setCookie('martian', now | date_modify("+30 days").timestamp) %}
     {# Sets a cookie to expire in 30 days. #}
 
     {% do craft.cookies.set('marvin', 'martian', '', '/foo/' ) %}
@@ -54,10 +54,10 @@ All of the parameters except for `NAME` are optional.  The `PATH` defaults to `/
 All three of these methods accomplish the same thing:
 
     {# Set the cookie using 'setSecureCookie' function #}
-    {{ setSecureCookie( NAME, VALUE, DURATION, PATH, DOMAIN, SECURE, HTTPONLY) }}
+    {% do setSecureCookie( NAME, VALUE, DURATION, PATH, DOMAIN, SECURE, HTTPONLY) %}
 
     {# Set the cookie using 'setSecureCookie' filter #}
-    {{ NAME | setSecureCookie( VALUE, DURATION, PATH, DOMAIN, SECURE, HTTPONLY) }}
+    {% do NAME | setSecureCookie( VALUE, DURATION, PATH, DOMAIN, SECURE, HTTPONLY) %}
 
     {# Set the cookie using 'setSecure' variable #}
     {% do craft.cookies.setSecure( NAME, VALUE, DURATION, PATH, DOMAIN, SECURE, HTTPONLY) %}
@@ -68,10 +68,10 @@ All of the parameters except for `NAME` are optional.  The `PATH` defaults to `/
 
 **Examples**
 
-    {{ setSecureCookie('marvin', 'martian', now | date_modify("+1 hour").timestamp ) }}
+    {% do setSecureCookie('marvin', 'martian', now | date_modify("+1 hour").timestamp) %}
     {# Sets a cookie to expire in an hour. #}
 
-    {{ 'marvin' | setSecureCookie('martian', now | date_modify("+30 days").timestamp ) }}
+    {% do 'marvin' | setSecureCookie('martian', now | date_modify("+30 days").timestamp) %}
     {# Sets a cookie to expire in 30 days. #}
 
     {% do craft.cookies.setSecure('marvin', 'martian', '', '/foo/' ) %}
@@ -82,17 +82,17 @@ All of the parameters except for `NAME` are optional.  The `PATH` defaults to `/
 Both of these methods accomplish the same thing:
 
     {# Get the cookie using 'getCookie' function #}
-    {{ getCookie( NAME ) }}
+    {% do getCookie( NAME ) %}
 
     {# Get the cookie using 'get' variable #}
     {% do craft.cookies.get( NAME ) %}
 
 **Example**
 
-    {{ getCookie('marvin') }}
+    {% do getCookie('marvin') %}
     {# Get the cookie using 'getCookie' function #}
 
-    {{ craft.cookies.get('marvin') }}
+    {% do craft.cookies.get('marvin') %}
     {# Get the cookie using 'get' variable #}
 
     {% if getCookie('marvin') %}
@@ -105,17 +105,17 @@ Both of these methods accomplish the same thing:
 Both of these methods accomplish the same thing:
 
     {# Get the cookie using 'getSecureCookie' function #}
-    {{ getSecureCookie( NAME ) }}
+    {% do getSecureCookie( NAME ) %}
 
     {# Get the cookie using 'getSecure' variable #}
     {% do craft.cookies.getSecure( NAME ) %}
 
 **Example**
 
-    {{ getSecureCookie('marvin') }}
+    {% do getSecureCookie('marvin') %}
     {# Get the cookie using 'getSecureCookie' function #}
 
-    {{ craft.cookies.getSecure('marvin') }}
+    {% do craft.cookies.getSecure('marvin') %}
     {# Get the cookie using 'getSecure' variable #}
 
     {% if getSecureCookie('marvin') %}
@@ -127,10 +127,10 @@ This function works the same as `getCookie` but it uses `craft()->request->getCo
 
 **Example**
 
-    {{ getSecureCookie('marvin') }}
+    {% do getSecureCookie('marvin') %}
     {# Get the cookie using 'getSecureCookie' function #}
 
-    {{ craft.cookies.getSecure('marvin') }}
+    {% do craft.cookies.getSecure('marvin') %}
     {# Get the cookie using 'getSecure' variable #}
 
     {% if getSecureCookie('marvin') %}
@@ -143,10 +143,10 @@ This function works the same as `getCookie` but it uses `craft()->request->getCo
 All three of these methods accomplish the same thing:
 
     {# Delete a cookie by passing no VALUE to 'setCookie' function #}
-    {{ setCookie( NAME ) }}
+    {% do setCookie( NAME ) %}
 
     {# Delete a cookie by passing no VALUE to 'setCookie' filter #}
-    {{ NAME | setCookie() }}
+    {% do NAME | setCookie() %}
 
     {# Delete a cookie by passing no VALUE to 'set' variable #}
     {% do craft.cookies.set( NAME ) %}
@@ -156,10 +156,10 @@ All three of these methods accomplish the same thing:
 All three of these methods accomplish the same thing:
 
     {# Delete a cookie by passing no VALUE to 'setSecureCookie' function #}
-    {{ setSecureCookie( NAME ) }}
+    {% do setSecureCookie( NAME ) %}
 
     {# Delete a cookie by passing no VALUE to 'setSecureCookie' filter #}
-    {{ NAME | setSecureCookie() }}
+    {% do NAME | setSecureCookie() %}
 
     {# Delete a cookie by passing no VALUE to 'setSecure' variable #}
     {% do craft.cookies.setSecure( NAME ) %}
