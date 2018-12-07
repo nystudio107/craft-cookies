@@ -1,5 +1,9 @@
 # Cookies Changelog
 
+## 1.1.11 - 2017.12.06
+### Changed
+* Fixed an issue where `getSecure()` would return nothing due to an improper parameter passed to `unserialize()`
+
 ## 1.1.10 - 2017.07.22
 ### Changed
 * If the passed in domain is empty, use the `defaultCookieDomain` config setting

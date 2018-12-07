@@ -158,7 +158,7 @@ class CookiesService extends Component
                 && !empty($cookie->value)
                 && $data !== false
             ) {
-                $result = @unserialize(base64_decode($data), false);
+                $result = unserialize(base64_decode($data), ['allowed_classes' => false]);
             }
         }
 
