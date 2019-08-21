@@ -4,7 +4,7 @@
 
 A simple plugin for setting and getting cookies from within [Craft CMS](http://craftcms.com) templates.
 
-![Screenshot](docs/resources/img/plugin-logo.png)
+![Screenshot](./docs/docs/resources/img/plugin-logo.png)
 
 Related: [Cookies for Craft 2.x](https://github.com/nystudio107/cookies)
 
