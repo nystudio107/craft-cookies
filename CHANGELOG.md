@@ -1,21 +1,25 @@
 # Cookies Changelog
 
-## 1.1.11 - 2017.12.06
+## 1.1.12 - 2020.02.13
+### Changed
+* Implemented `sameSite` for cookies, thank to a PR from Kenny Quan
+
+## 1.1.11 - 2018.12.06
 ### Changed
 * Fixed an issue where `getSecure()` would return nothing due to an improper parameter passed to `unserialize()`
 
-## 1.1.10 - 2017.07.22
+## 1.1.10 - 2018.07.22
 ### Changed
 * If the passed in domain is empty, use the `defaultCookieDomain` config setting
 * Don't unserialize any classes in secure cookie data
 * Code cleanup
 
-## 1.1.9 - 2017.02.01
+## 1.1.9 - 2018.02.01
 ### Changed
 * Renamed the composer package name to `craft-cookies`
 * Check to ensure a cookie exists before accessing it in `getSecure()`
 
-## 1.1.8 - 2017.01.23
+## 1.1.8 - 2018.01.23
 ### Changed
 * Fixed an issue with removing cookies
 * Added try/catch so errors are logged instead of exceptions thrown
