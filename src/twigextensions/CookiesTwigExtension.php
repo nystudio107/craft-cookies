@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Cookies plugin for Craft CMS 3.x
  *
@@ -69,6 +70,7 @@ class CookiesTwigExtension extends \Twig_Extension
      * @param string $domain
      * @param bool   $secure
      * @param bool   $httpOnly
+     * @param string $sameSite
      */
     public function setCookie(
         $name = "",
@@ -77,7 +79,8 @@ class CookiesTwigExtension extends \Twig_Extension
         $path = "/",
         $domain = "",
         $secure = false,
-        $httpOnly = false
+        $httpOnly = false,
+        $sameSite = null
     ) {
         Cookies::$plugin->cookies->set(
             $name,
@@ -86,7 +89,8 @@ class CookiesTwigExtension extends \Twig_Extension
             $path,
             $domain,
             $secure,
-            $httpOnly
+            $httpOnly,
+            $sameSite
         );
     }
 
@@ -112,6 +116,7 @@ class CookiesTwigExtension extends \Twig_Extension
      * @param string $domain
      * @param bool   $secure
      * @param bool   $httpOnly
+     * @param string $sameSite
      */
     public function setSecureCookie(
         $name = "",
@@ -120,7 +125,8 @@ class CookiesTwigExtension extends \Twig_Extension
         $path = "/",
         $domain = "",
         $secure = false,
-        $httpOnly = false
+        $httpOnly = false,
+        $sameSite = null
     ) {
         Cookies::$plugin->cookies->setSecure(
             $name,
@@ -129,7 +135,8 @@ class CookiesTwigExtension extends \Twig_Extension
             $path,
             $domain,
             $secure,
-            $httpOnly
+            $httpOnly,
+            $sameSite
         );
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Cookies plugin for Craft CMS 3.x
  *
@@ -36,6 +37,7 @@ class CookiesService extends Component
      * @param string $domain
      * @param bool   $secure
      * @param bool   $httpOnly
+     * @param string $sameSite
      */
     public function set(
         $name = '',
@@ -44,14 +46,26 @@ class CookiesService extends Component
         $path = '/',
         $domain = '',
         $secure = false,
-        $httpOnly = false
+        $httpOnly = false,
+        $sameSite = null
     ) {
         if (empty($value)) {
             Craft::$app->response->cookies->remove($name);
         } else {
             $domain = empty($domain) ? Craft::$app->getConfig()->getGeneral()->defaultCookieDomain : $domain;
-            $expire = (int)$expire;
-            setcookie($name, $value, $expire, $path, $domain, $secure, $httpOnly);
+            $expire = (int) $expire;
+            if (PHP_VERSION_ID >= 70300) {
+                setcookie($name, $value, [
+                    'expires' => $expire,
+                    'path' => $path,
+                    'domain' => $domain,
+                    'secure' => true,
+                    'httponly' => $httpOnly,
+                    'samesite' => $sameSite
+                ]);
+            } else {
+                setcookie($name, $value, $expire, $path, $domain, $secure, $httpOnly);
+            }
             $_COOKIE[$name] = $value;
         }
     }
@@ -83,6 +97,7 @@ class CookiesService extends Component
      * @param string $domain
      * @param bool   $secure
      * @param bool   $httpOnly
+     * @param string $sameSite
      */
     public function setSecure(
         $name = '',
@@ -91,27 +106,28 @@ class CookiesService extends Component
         $path = '/',
         $domain = '',
         $secure = false,
-        $httpOnly = false
+        $httpOnly = false,
+        $sameSite = null
     ) {
         if (empty($value)) {
             Craft::$app->response->cookies->remove($name);
         } else {
             $domain = empty($domain) ? Craft::$app->getConfig()->getGeneral()->defaultCookieDomain : $domain;
-            $expire = (int)$expire;
+            $expire = (int) $expire;
             $cookie = new Cookie(['name' => $name, 'value' => '']);
 
             try {
                 $cookie->value = Craft::$app->security->hashData(base64_encode(serialize($value)));
             } catch (InvalidConfigException $e) {
                 Craft::error(
-                    'Error setting secure cookie: '.$e->getMessage(),
+                    'Error setting secure cookie: ' . $e->getMessage(),
                     __METHOD__
                 );
 
                 return;
             } catch (Exception $e) {
                 Craft::error(
-                    'Error setting secure cookie: '.$e->getMessage(),
+                    'Error setting secure cookie: ' . $e->getMessage(),
                     __METHOD__
                 );
 
@@ -122,7 +138,9 @@ class CookiesService extends Component
             $cookie->domain = $domain;
             $cookie->secure = $secure;
             $cookie->httpOnly = $httpOnly;
-
+            if (PHP_VERSION_ID >= 70300) {
+                $cookie->sameSite = $sameSite;
+            }
             Craft::$app->response->cookies->add($cookie);
         }
     }
@@ -143,18 +161,19 @@ class CookiesService extends Component
                 $data = Craft::$app->security->validateData($cookie->value);
             } catch (InvalidConfigException $e) {
                 Craft::error(
-                    'Error getting secure cookie: '.$e->getMessage(),
+                    'Error getting secure cookie: ' . $e->getMessage(),
                     __METHOD__
                 );
                 $data = false;
             } catch (Exception $e) {
                 Craft::error(
-                    'Error getting secure cookie: '.$e->getMessage(),
+                    'Error getting secure cookie: ' . $e->getMessage(),
                     __METHOD__
                 );
                 $data = false;
             }
-            if ($cookie
+            if (
+                $cookie
                 && !empty($cookie->value)
                 && $data !== false
             ) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Cookies plugin for Craft CMS 3.x
  *
@@ -33,6 +34,7 @@ class CookiesVariable
      * @param string $domain
      * @param bool   $secure
      * @param bool   $httpOnly
+     * @param string $sameSite
      */
     public function set(
         $name = "",
@@ -41,7 +43,8 @@ class CookiesVariable
         $path = "/",
         $domain = "",
         $secure = false,
-        $httpOnly = false
+        $httpOnly = false,
+        $sameSite = null
     ) {
         Cookies::$plugin->cookies->set(
             $name,
@@ -50,7 +53,8 @@ class CookiesVariable
             $path,
             $domain,
             $secure,
-            $httpOnly
+            $httpOnly,
+            $sameSite
         );
     }
 
@@ -76,6 +80,7 @@ class CookiesVariable
      * @param string $domain
      * @param bool   $secure
      * @param bool   $httpOnly
+     * @param string $sameSite
      */
     public function setSecure(
         $name = "",
@@ -84,7 +89,8 @@ class CookiesVariable
         $path = "/",
         $domain = "",
         $secure = false,
-        $httpOnly = false
+        $httpOnly = false,
+        $sameSite = null
     ) {
         Cookies::$plugin->cookies->setSecure(
             $name,
@@ -93,7 +99,8 @@ class CookiesVariable
             $path,
             $domain,
             $secure,
-            $httpOnly
+            $httpOnly,
+            $sameSite
         );
     }
 
