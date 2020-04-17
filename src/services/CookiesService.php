@@ -59,7 +59,7 @@ class CookiesService extends Component
                     'expires' => $expire,
                     'path' => $path,
                     'domain' => $domain,
-                    'secure' => true,
+                    'secure' => $secure,
                     'httponly' => $httpOnly,
                     'samesite' => $sameSite
                 ]);
