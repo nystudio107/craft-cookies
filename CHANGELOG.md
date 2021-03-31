@@ -1,6 +1,9 @@
 # Cookies Changelog
 
 ## 1.1.13 - 2021.03.31
+### Added
+* Added Dockerfile & Makefile for building docs
+
 ### Fixed
 * No longer hardcode secure to be `true` for regular cookies via PR from jedimonkey (https://github.com/nystudio107/craft-cookies/issues/11)
 
