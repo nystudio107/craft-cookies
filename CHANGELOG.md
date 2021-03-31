@@ -1,5 +1,9 @@
 # Cookies Changelog
 
+## 1.1.13 - 2021.03.31
+### Fixed
+* No longer hardcode secure to be `true` for regular cookies via PR from jedimonkey (https://github.com/nystudio107/craft-cookies/issues/11)
+
 ## 1.1.12 - 2020.02.13
 ### Changed
 * Implemented `sameSite` for cookies, thank to a PR from Kenny Quan
