@@ -1,5 +1,12 @@
 # Cookies Changelog
 
+## 1.1.14 - 2021.04.15
+### Changed
+* Move settings from the `composer.json` “extra” to the plugin main class
+
+### Fixed
+* Removed duplicate example for Setting Secure Cookies in the docs (https://github.com/nystudio107/craft-cookies/issues/23)
+
 ## 1.1.13 - 2021.03.31
 ### Added
 * Added Dockerfile & Makefile for building docs
