@@ -143,20 +143,6 @@ Both of these methods accomplish the same thing:
 
 This function works the same as `getCookie` but it uses `Craft::$app->getRequest()->getCookie()` to retrieve the cookies via Craft. It also utilizes `craft->security` framework to decrypt and validate the cookie contents between requests.
 
-**Example**
-
-```twig
-    {% do getSecureCookie('marvin') %}
-    {# Get the cookie using 'getSecureCookie' function #}
-
-    {% do craft.cookies.getSecure('marvin') %}
-    {# Get the cookie using 'getSecure' variable #}
-
-    {% if getSecureCookie('marvin') %}
-        {% set myCookie = getSecureCookie('marvin') %}
-        {{ myCookie }}
-    {% endif %}
-```
 
 ## Deleting cookies
 
