@@ -33,6 +33,6 @@
         "name": "Cookies",
         "handle": "cookies",
         "changelogUrl": "https://raw.githubusercontent.com/nystudio107/craft-cookies/v1/CHANGELOG.md",
-        "class": "nystudio107\\cookies\\Cookies",
+        "class": "nystudio107\\cookies\\Cookies"
     }
 }
