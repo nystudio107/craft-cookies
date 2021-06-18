@@ -52,7 +52,7 @@ class Cookies extends Plugin
     /**
      * @var bool
      */
-    public $hasCpSettings = true;
+    public $hasCpSettings = false;
 
     // Static Methods
     // =========================================================================
