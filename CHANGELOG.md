@@ -3,6 +3,7 @@
 ## 1.1.15 - 2021.06.18
 ### Changed
 * Remove blank, unused Settings page
+* Switched documentation system to VitePress
 
 ## 1.1.14 - 2021.04.15
 ### Changed
