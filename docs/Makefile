@@ -1,37 +1,42 @@
 TAG?=14-alpine
-CONTAINER?=$(shell basename $(CURDIR))-buildchain
+CONTAINER?=$(shell basename $(dir $(CURDIR)))-docs
 DOCKERRUN=docker container run \
 	--name ${CONTAINER} \
 	--rm \
+	-p 3002:3002 \
 	-t \
-	--network plugindev_default \
-	-p 8080:8080 \
 	-v `pwd`:/app \
 	${CONTAINER}:${TAG}
-DOCSDEST?=../../sites/nystudio107/web/docs/cookies
+DOCSDEST?=../../../sites/nystudio107/web/docs/cookies
 
-.PHONY: build dev docker docs install npm
+.PHONY: docker build dev fix install lint update npm
 
-build: docker install
-	${DOCKERRUN} \
-		run build
-dev: docker install
-	${DOCKERRUN} \
-		run dev
 docker:
 	docker build \
 		. \
 		-t ${CONTAINER}:${TAG} \
 		--build-arg TAG=${TAG} \
 		--no-cache
-docs: docker
+build: docker install update
 	${DOCKERRUN} \
-		run docs
+		run docs:build
 	rm -rf ${DOCSDEST}
-	mv ./docs/docs/.vuepress/dist ${DOCSDEST}
+	mv ./docs/.vitepress/dist ${DOCSDEST}
+dev: docker install
+	${DOCKERRUN} \
+		run docs:dev
+fix: docker install
+	${DOCKERRUN} \
+		run docs:fix
 install: docker
 	${DOCKERRUN} \
 		install
+lint: docker install
+	${DOCKERRUN} \
+		run docs:lint
+update: docker
+	${DOCKERRUN} \
+		update
 npm: docker
 	${DOCKERRUN} \
 		$(filter-out $@,$(MAKECMDGOALS))

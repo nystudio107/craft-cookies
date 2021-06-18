@@ -1,5 +1,15 @@
 # Cookies Changelog
 
+## 1.1.15 - 2021.06.18
+### Added
+* Build docs via GitHub Actions CI
+
+### Changed
+* Switched documentation system to VitePress
+
+### Fixed
+* Remove blank, unused Settings page
+
 ## 1.1.14 - 2021.04.15
 ### Changed
 * Move settings from the `composer.json` “extra” to the plugin main class
