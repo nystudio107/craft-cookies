@@ -36,7 +36,7 @@ All three of these methods accomplish the same thing:
 
 They all act as a wrapper for the PHP `setcookie` function. [More info](http://php.net/manual/en/function.setcookie.php)
 
-All of the parameters except for `NAME` are optional. The `PATH` defaults to `/` if not specified. The `SAMESITE` should be either 'None', 'Lax' or 'Strict'.
+All of the parameters except for `NAME` are optional. The `PATH` defaults to `/` if not specified. The `SAMESITE` should be either 'None’, 'Lax’ or 'Strict’.
 
 (Note: `SAMESITE` only works for environments with PHP 7.3 and up)
 
@@ -68,9 +68,9 @@ All three of these methods accomplish the same thing:
     {% do craft.cookies.setSecure( NAME, VALUE, DURATION, PATH, DOMAIN, SECURE, HTTPONLY, SAMESITE) %}
 ```
 
-This function works the same as `setCookie` but instead of using the PHP `setcookie` function, it uses the `Craft::$app->getResponse()->getCookies()->add` to add the cookies via Craft. It also utilizes `craft->security` framework to encrypt and validate the cookie contents between requests.
+This function works the same as `setCookie` but instead of using the PHP `setcookie` function, it uses the `Craft::$app->getResponse()->getCookies()->add` to add the cookies via Craft. It also uses `craft->security` framework to encrypt and validate the cookie contents between requests.
 
-All of the parameters except for `NAME` are optional. The `PATH` defaults to `/` if not specified. The `SAMESITE` should be either 'None', 'Lax' or 'Strict'.
+All of the parameters except for `NAME` are optional. The `PATH` defaults to `/` if not specified. The `SAMESITE` should be either 'None’, 'Lax’ or 'Strict’.
 
 (Note: `SAMESITE` only works for environments with PHP 7.3 and up)
 
@@ -141,7 +141,7 @@ Both of these methods accomplish the same thing:
     {% endif %}
 ```
 
-This function works the same as `getCookie` but it uses `Craft::$app->getRequest()->getCookie()` to retrieve the cookies via Craft. It also utilizes `craft->security` framework to decrypt and validate the cookie contents between requests.
+This function works the same as `getCookie` but it uses `Craft::$app->getRequest()->getCookie()` to retrieve the cookies via Craft. It also uses `craft->security` framework to decrypt and validate the cookie contents between requests.
 
 
 ## Deleting cookies
