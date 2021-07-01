@@ -13,7 +13,7 @@ module.exports = {
         docsDir: 'docs/docs',
         docsBranch: 'v1',
         algolia: {
-            apiKey: '',
+            apiKey: 'a9aa53533590e8d50956989fffac164e',
             indexName: 'cookies'
         },
         editLinks: true,
