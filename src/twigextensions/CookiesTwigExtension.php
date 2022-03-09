@@ -11,8 +11,9 @@
 namespace nystudio107\cookies\twigextensions;
 
 use nystudio107\cookies\Cookies;
-
-use Craft;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 /**
  * Cookies twig extension
@@ -21,15 +22,13 @@ use Craft;
  * @package   Cookies
  * @since     1.1.0
  */
-class CookiesTwigExtension extends \Twig_Extension
+class CookiesTwigExtension extends AbstractExtension
 {
 
     /**
      * Return our Twig Extension name
-     *
-     * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return 'Cookies';
     }
@@ -37,51 +36,45 @@ class CookiesTwigExtension extends \Twig_Extension
     /**
      * @inheritdoc
      */
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
-            new \Twig_SimpleFilter('setCookie', [$this, 'setCookie']),
-            new \Twig_SimpleFilter('getCookie', [$this, 'getCookie']),
-            new \Twig_SimpleFilter('setSecureCookie', [$this, 'setSecureCookie']),
-            new \Twig_SimpleFilter('getSecureCookie', [$this, 'getSecureCookie']),
+            new TwigFilter('setCookie', fn(string $name = "", string $value = "", int $expire = 0, string $path = "/", string $domain = "", bool $secure = false, bool $httpOnly = false, ?string $sameSite = null) => $this->setCookie($name, $value, $expire, $path, $domain, $secure, $httpOnly, $sameSite)),
+            new TwigFilter('getCookie', fn($name) => $this->getCookie($name)),
+            new TwigFilter('setSecureCookie', fn(string $name = "", string $value = "", int $expire = 0, string $path = "/", string $domain = "", bool $secure = false, bool $httpOnly = false, ?string $sameSite = null) => $this->setSecureCookie($name, $value, $expire, $path, $domain, $secure, $httpOnly, $sameSite)),
+            new TwigFilter('getSecureCookie', fn($name) => $this->getSecureCookie($name)),
         ];
     }
 
     /**
      * @inheritdoc
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
-            new \Twig_SimpleFunction('setCookie', [$this, 'setCookie']),
-            new \Twig_SimpleFunction('getCookie', [$this, 'getCookie']),
-            new \Twig_SimpleFunction('setSecureCookie', [$this, 'setSecureCookie']),
-            new \Twig_SimpleFunction('getSecureCookie', [$this, 'getSecureCookie']),
+            new TwigFunction('setCookie', fn(string $name = "", string $value = "", int $expire = 0, string $path = "/", string $domain = "", bool $secure = false, bool $httpOnly = false, ?string $sameSite = null) => $this->setCookie($name, $value, $expire, $path, $domain, $secure, $httpOnly, $sameSite)),
+            new TwigFunction('getCookie', fn($name) => $this->getCookie($name)),
+            new TwigFunction('setSecureCookie', fn(string $name = "", string $value = "", int $expire = 0, string $path = "/", string $domain = "", bool $secure = false, bool $httpOnly = false, ?string $sameSite = null) => $this->setSecureCookie($name, $value, $expire, $path, $domain, $secure, $httpOnly, $sameSite)),
+            new TwigFunction('getSecureCookie', fn($name) => $this->getSecureCookie($name)),
         ];
     }
 
     /**
      * Set a cookie
      *
-     * @param string $name
-     * @param string $value
-     * @param int    $expire
-     * @param string $path
-     * @param string $domain
-     * @param bool   $secure
-     * @param bool   $httpOnly
      * @param string $sameSite
      */
     public function setCookie(
-        $name = "",
-        $value = "",
-        $expire = 0,
-        $path = "/",
-        $domain = "",
-        $secure = false,
-        $httpOnly = false,
-        $sameSite = null
-    ) {
+        string $name = "",
+        string $value = "",
+        int    $expire = 0,
+        string $path = "/",
+        string $domain = "",
+        bool   $secure = false,
+        bool   $httpOnly = false,
+               $sameSite = null
+    ): void
+    {
         Cookies::$plugin->cookies->set(
             $name,
             $value,
@@ -109,25 +102,19 @@ class CookiesTwigExtension extends \Twig_Extension
     /**
      * Set a secure cookie
      *
-     * @param string $name
-     * @param string $value
-     * @param int    $expire
-     * @param string $path
-     * @param string $domain
-     * @param bool   $secure
-     * @param bool   $httpOnly
      * @param string $sameSite
      */
     public function setSecureCookie(
-        $name = "",
-        $value = "",
-        $expire = 0,
-        $path = "/",
-        $domain = "",
-        $secure = false,
-        $httpOnly = false,
-        $sameSite = null
-    ) {
+        string $name = "",
+        string $value = "",
+        int    $expire = 0,
+        string $path = "/",
+        string $domain = "",
+        bool   $secure = false,
+        bool   $httpOnly = false,
+               $sameSite = null
+    ): void
+    {
         Cookies::$plugin->cookies->setSecure(
             $name,
             $value,

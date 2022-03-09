@@ -1,38 +1,38 @@
 {
-    "name": "nystudio107/craft-cookies",
-    "description": "A simple plugin for setting and getting cookies from within Craft CMS templates.",
-    "type": "craft-plugin",
-    "version": "1.1.15",
-    "keywords": [
-        "craft",
-        "cms",
-        "craftcms",
-        "craft-plugin",
-        "cookies"
-    ],
-    "support": {
-        "docs": "https://nystudio107.com/plugins/cookies/documentation",
-        "issues": "https://nystudio107.com/plugins/cookies/support"
-    },
-    "license": "MIT",
-    "authors": [
-        {
-          "name": "nystudio107",
-          "homepage": "https://nystudio107.com/"
-        }
-    ],
-    "require": {
-        "craftcms/cms": "^3.0.0"
-    },
-    "autoload": {
-        "psr-4": {
-          "nystudio107\\cookies\\": "src/"
-        }
-    },
-    "extra": {
-        "name": "Cookies",
-        "handle": "cookies",
-        "changelogUrl": "https://raw.githubusercontent.com/nystudio107/craft-cookies/v1/CHANGELOG.md",
-        "class": "nystudio107\\cookies\\Cookies"
+  "name": "nystudio107/craft-cookies",
+  "description": "A simple plugin for setting and getting cookies from within Craft CMS templates.",
+  "type": "craft-plugin",
+  "version": "4.0.0-beta.1",
+  "keywords": [
+    "craft",
+    "cms",
+    "craftcms",
+    "craft-plugin",
+    "cookies"
+  ],
+  "support": {
+    "docs": "https://nystudio107.com/docs/cookies/",
+    "issues": "https://nystudio107.com/plugins/cookies/support",
+    "source": "https://github.com/nystudio107/craft-cookies"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "nystudio107",
+      "homepage": "https://nystudio107.com/"
     }
+  ],
+  "require": {
+    "craftcms/cms": "^4.0.0-alpha.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "nystudio107\\cookies\\": "src/"
+    }
+  },
+  "extra": {
+    "class": "nystudio107\\cookies\\Cookies",
+    "handle": "cookies",
+    "name": "Cookies"
+  }
 }

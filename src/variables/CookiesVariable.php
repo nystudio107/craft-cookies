@@ -27,25 +27,18 @@ class CookiesVariable
     /**
      * Set a cookie
      *
-     * @param string $name
-     * @param string $value
-     * @param int    $expire
-     * @param string $path
-     * @param string $domain
-     * @param bool   $secure
-     * @param bool   $httpOnly
      * @param string $sameSite
      */
     public function set(
-        $name = "",
-        $value = "",
-        $expire = 0,
-        $path = "/",
-        $domain = "",
-        $secure = false,
-        $httpOnly = false,
+        string $name = "",
+        string $value = "",
+        int $expire = 0,
+        string $path = "/",
+        string $domain = "",
+        bool $secure = false,
+        bool $httpOnly = false,
         $sameSite = null
-    ) {
+    ): void {
         Cookies::$plugin->cookies->set(
             $name,
             $value,
@@ -73,25 +66,18 @@ class CookiesVariable
     /**
      * Set a secure cookie
      *
-     * @param string $name
-     * @param string $value
-     * @param int    $expire
-     * @param string $path
-     * @param string $domain
-     * @param bool   $secure
-     * @param bool   $httpOnly
      * @param string $sameSite
      */
     public function setSecure(
-        $name = "",
-        $value = "",
-        $expire = 0,
-        $path = "/",
-        $domain = "",
-        $secure = false,
-        $httpOnly = false,
+        string $name = "",
+        string $value = "",
+        int $expire = 0,
+        string $path = "/",
+        string $domain = "",
+        bool $secure = false,
+        bool $httpOnly = false,
         $sameSite = null
-    ) {
+    ): void {
         Cookies::$plugin->cookies->setSecure(
             $name,
             $value,

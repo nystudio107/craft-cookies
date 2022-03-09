@@ -42,17 +42,17 @@ class Cookies extends Plugin
     /**
      * @var string
      */
-    public $schemaVersion = '1.0.0';
+    public string $schemaVersion = '1.0.0';
 
     /**
      * @var bool
      */
-    public $hasCpSection = false;
+    public bool $hasCpSection = false;
 
     /**
      * @var bool
      */
-    public $hasCpSettings = false;
+    public bool $hasCpSettings = false;
 
     // Static Methods
     // =========================================================================
@@ -72,7 +72,7 @@ class Cookies extends Plugin
     /**
      * @inheritdoc
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
         self::$plugin = $this;
@@ -81,7 +81,7 @@ class Cookies extends Plugin
         Event::on(
             CraftVariable::class,
             CraftVariable::EVENT_INIT,
-            function (Event $event) {
+            function (Event $event): void {
                 /** @var CraftVariable $variable */
                 $variable = $event->sender;
                 $variable->set('cookies', CookiesVariable::class);
@@ -104,10 +104,8 @@ class Cookies extends Plugin
     /**
      * Returns the user-facing name of the plugin, which can override the name
      * in composer.json
-     *
-     * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return Craft::t('cookies', 'Cookies');
     }
