@@ -61,8 +61,6 @@ class CookiesTwigExtension extends AbstractExtension
 
     /**
      * Set a cookie
-     *
-     * @param string $sameSite
      */
     public function setCookie(
         string $name = "",
@@ -72,7 +70,7 @@ class CookiesTwigExtension extends AbstractExtension
         string $domain = "",
         bool   $secure = false,
         bool   $httpOnly = false,
-               $sameSite = null
+        bool   $sameSite = false
     ): void
     {
         Cookies::$plugin->cookies->set(
@@ -89,20 +87,14 @@ class CookiesTwigExtension extends AbstractExtension
 
     /**
      * Get a cookie
-     *
-     * @param $name
-     *
-     * @return mixed
      */
-    public function getCookie($name)
+    public function getCookie(string $name): string
     {
         return Cookies::$plugin->cookies->get($name);
     }
 
     /**
      * Set a secure cookie
-     *
-     * @param string $sameSite
      */
     public function setSecureCookie(
         string $name = "",
@@ -112,7 +104,7 @@ class CookiesTwigExtension extends AbstractExtension
         string $domain = "",
         bool   $secure = false,
         bool   $httpOnly = false,
-               $sameSite = null
+        bool   $sameSite = false
     ): void
     {
         Cookies::$plugin->cookies->setSecure(
@@ -129,12 +121,8 @@ class CookiesTwigExtension extends AbstractExtension
 
     /**
      * Get a secure cookie
-     *
-     * @param $name
-     *
-     * @return mixed
      */
-    public function getSecureCookie($name)
+    public function getSecureCookie(string $name): string
     {
         return Cookies::$plugin->cookies->getSecure($name);
     }

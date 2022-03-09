@@ -13,5 +13,6 @@
  * @since     1.1.0
  */
 return [
-    'Cookies plugin loaded' => 'Cookies plugin loaded',
+    'Cookies' => 'Cookies',
+    '{name} plugin loaded' => '{name} plugin loaded'
 ];

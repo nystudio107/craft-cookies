@@ -12,8 +12,6 @@ namespace nystudio107\cookies\variables;
 
 use nystudio107\cookies\Cookies;
 
-use Craft;
-
 /**
  * Cookies template variables
  *
@@ -26,19 +24,18 @@ class CookiesVariable
 
     /**
      * Set a cookie
-     *
-     * @param string $sameSite
      */
     public function set(
         string $name = "",
         string $value = "",
-        int $expire = 0,
+        int    $expire = 0,
         string $path = "/",
         string $domain = "",
-        bool $secure = false,
-        bool $httpOnly = false,
-        $sameSite = null
-    ): void {
+        bool   $secure = false,
+        bool   $httpOnly = false,
+        bool   $sameSite = false
+    ): void
+    {
         Cookies::$plugin->cookies->set(
             $name,
             $value,
@@ -53,31 +50,26 @@ class CookiesVariable
 
     /**
      * Get a cookie
-     *
-     * @param $name
-     *
-     * @return mixed
      */
-    public function get($name)
+    public function get(string $name): string
     {
         return Cookies::$plugin->cookies->get($name);
     }
 
     /**
      * Set a secure cookie
-     *
-     * @param string $sameSite
      */
     public function setSecure(
         string $name = "",
         string $value = "",
-        int $expire = 0,
+        int    $expire = 0,
         string $path = "/",
         string $domain = "",
-        bool $secure = false,
-        bool $httpOnly = false,
-        $sameSite = null
-    ): void {
+        bool   $secure = false,
+        bool   $httpOnly = false,
+        bool   $sameSite = false
+    ): void
+    {
         Cookies::$plugin->cookies->setSecure(
             $name,
             $value,
@@ -92,12 +84,8 @@ class CookiesVariable
 
     /**
      * Get a secure cookie
-     *
-     * @param $name
-     *
-     * @return mixed
      */
-    public function getSecure($name)
+    public function getSecure(string $name): string
     {
         return Cookies::$plugin->cookies->getSecure($name);
     }

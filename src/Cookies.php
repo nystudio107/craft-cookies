@@ -10,14 +10,12 @@
 
 namespace nystudio107\cookies;
 
-use nystudio107\cookies\services\CookiesService;
-use nystudio107\cookies\twigextensions\CookiesTwigExtension;
-use nystudio107\cookies\variables\CookiesVariable;
-
 use Craft;
 use craft\base\Plugin;
 use craft\web\twig\variables\CraftVariable;
-
+use nystudio107\cookies\services\CookiesService;
+use nystudio107\cookies\twigextensions\CookiesTwigExtension;
+use nystudio107\cookies\variables\CookiesVariable;
 use yii\base\Event;
 
 /**
@@ -27,14 +25,14 @@ use yii\base\Event;
  * @package   Cookies
  * @since     1.1.0
  *
- * @property  CookiesService    cookies
+ * @property  CookiesService cookies
  */
 class Cookies extends Plugin
 {
     /**
-     * @var Cookies
+     * @var null|Cookies
      */
-    public static $plugin;
+    public static ?Cookies $plugin = null;
 
     // Public Properties
     // =========================================================================
@@ -81,7 +79,7 @@ class Cookies extends Plugin
         Event::on(
             CraftVariable::class,
             CraftVariable::EVENT_INIT,
-            function (Event $event): void {
+            static function (Event $event): void {
                 /** @var CraftVariable $variable */
                 $variable = $event->sender;
                 $variable->set('cookies', CookiesVariable::class);

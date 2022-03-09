@@ -25,7 +25,6 @@ use yii\web\Cookie;
  */
 class CookiesService extends Component
 {
-
     /**
      * Set a cookie
      */
@@ -63,18 +62,10 @@ class CookiesService extends Component
 
     /**
      * Get a cookie
-     *
-     *
-     * @return mixed
      */
-    public function get(string $name = '')
+    public function get(string $name = ''): string
     {
-        $result = '';
-        if (isset($_COOKIE[$name])) {
-            $result = $_COOKIE[$name];
-        }
-
-        return $result;
+        return $_COOKIE[$name] ?? '';
     }
 
     /**
@@ -123,11 +114,8 @@ class CookiesService extends Component
 
     /**
      * Get a secure cookie
-     *
-     *
-     * @return mixed
      */
-    public function getSecure(string $name = '')
+    public function getSecure(string $name = ''): string
     {
         $result = '';
         $cookie = Craft::$app->request->cookies->get($name);
