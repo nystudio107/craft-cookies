@@ -1,5 +1,12 @@
 # Cookies Changelog
 
+## 4.0.0 - 2022.05.10
+### Added
+* Initial Craft CMS 4 release
+
+### Fixed
+* Fixed an issue where `sameSite` must be of type boolean ([#37](https://github.com/nystudio107/craft-cookies/issues/37))
+
 ## 4.0.0-beta.1 - 2022.03.09
 
 ### Added

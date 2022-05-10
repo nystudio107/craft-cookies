@@ -29,6 +29,9 @@ use yii\base\Event;
  */
 class Cookies extends Plugin
 {
+    // Static Public Properties
+    // =========================================================================
+
     /**
      * @var null|Cookies
      */
@@ -52,7 +55,7 @@ class Cookies extends Plugin
      */
     public bool $hasCpSettings = false;
 
-    // Static Methods
+    // Public Methods
     // =========================================================================
 
     /**
