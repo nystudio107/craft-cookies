@@ -36,7 +36,7 @@ class CookiesService extends Component
         string $domain = '',
         bool   $secure = false,
         bool   $httpOnly = false,
-        bool   $sameSite = false
+        string $sameSite = ''
     ): void
     {
         if (empty($value)) {
@@ -79,7 +79,7 @@ class CookiesService extends Component
         string $domain = '',
         bool   $secure = false,
         bool   $httpOnly = false,
-        bool   $sameSite = false
+        string $sameSite = ''
     ): void
     {
         if (empty($value)) {
