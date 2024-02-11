@@ -21,7 +21,6 @@ use nystudio107\cookies\Cookies;
  */
 class CookiesVariable
 {
-
     /**
      * Set a cookie
      *
@@ -43,8 +42,7 @@ class CookiesVariable
         $secure = false,
         $httpOnly = false,
         $sameSite = null
-    )
-    {
+    ) {
         Cookies::$plugin->cookies->set(
             $name,
             $value,
@@ -90,8 +88,7 @@ class CookiesVariable
         $secure = false,
         $httpOnly = false,
         $sameSite = null
-    )
-    {
+    ) {
         Cookies::$plugin->cookies->setSecure(
             $name,
             $value,

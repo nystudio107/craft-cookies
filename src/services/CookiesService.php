@@ -25,7 +25,6 @@ use yii\web\Cookie;
  */
 class CookiesService extends Component
 {
-
     /**
      * Set a cookie
      *
@@ -47,8 +46,7 @@ class CookiesService extends Component
         $secure = false,
         $httpOnly = false,
         $sameSite = null
-    )
-    {
+    ) {
         if (empty($value)) {
             Craft::$app->response->cookies->remove($name);
         } else {
@@ -61,7 +59,7 @@ class CookiesService extends Component
                     'domain' => $domain,
                     'secure' => $secure,
                     'httponly' => $httpOnly,
-                    'samesite' => $sameSite
+                    'samesite' => $sameSite,
                 ]);
             } else {
                 setcookie($name, $value, $expire, $path, $domain, $secure, $httpOnly);
@@ -108,8 +106,7 @@ class CookiesService extends Component
         $secure = false,
         $httpOnly = false,
         $sameSite = null
-    )
-    {
+    ) {
         if (empty($value)) {
             Craft::$app->response->cookies->remove($name);
         } else {
