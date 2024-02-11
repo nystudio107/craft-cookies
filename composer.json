@@ -2,7 +2,7 @@
   "name": "nystudio107/craft-cookies",
   "description": "A simple plugin for setting and getting cookies from within Craft CMS templates.",
   "type": "craft-plugin",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "keywords": [
     "craft",
     "cms",
@@ -24,6 +24,24 @@
   ],
   "require": {
     "craftcms/cms": "^4.0.0"
+  },
+  "require-dev": {
+    "craftcms/ecs": "dev-main",
+    "craftcms/phpstan": "dev-main",
+    "craftcms/rector": "dev-main"
+  },
+  "scripts": {
+    "phpstan": "phpstan --ansi --memory-limit=1G",
+    "check-cs": "ecs check --ansi",
+    "fix-cs": "ecs check --fix --ansi"
+  },
+  "config": {
+    "allow-plugins": {
+      "craftcms/plugin-installer": true,
+      "yiisoft/yii2-composer": true
+    },
+    "optimize-autoloader": true,
+    "sort-packages": true
   },
   "autoload": {
     "psr-4": {
