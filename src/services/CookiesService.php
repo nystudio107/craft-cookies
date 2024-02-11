@@ -46,7 +46,8 @@ class CookiesService extends Component
         $secure = false,
         $httpOnly = false,
         $sameSite = null
-    ) {
+    )
+    {
         if (empty($value)) {
             Craft::$app->response->cookies->remove($name);
         } else {
@@ -106,7 +107,8 @@ class CookiesService extends Component
         $secure = false,
         $httpOnly = false,
         $sameSite = null
-    ) {
+    )
+    {
         if (empty($value)) {
             Craft::$app->response->cookies->remove($name);
         } else {
@@ -171,8 +173,7 @@ class CookiesService extends Component
                 $data = false;
             }
             if (
-                $cookie
-                && !empty($cookie->value)
+                !empty($cookie->value)
                 && $data !== false
             ) {
                 $result = unserialize(base64_decode($data), ['allowed_classes' => false]);
