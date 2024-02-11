@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Cookies plugin for Craft CMS 3.x
+ * Cookies plugin for Craft CMS
  *
  * @link      https://nystudio107.com/
- * @copyright Copyright (c) 2017 nystudio107
+ * @copyright Copyright (c) nystudio107
  * @license   MIT License https://opensource.org/licenses/MIT
  */
 
@@ -12,7 +12,6 @@ namespace nystudio107\cookies\services;
 
 use Craft;
 use craft\base\Component;
-
 use yii\base\Exception;
 use yii\base\InvalidConfigException;
 use yii\web\Cookie;
@@ -32,11 +31,11 @@ class CookiesService extends Component
      *
      * @param string $name
      * @param string $value
-     * @param int    $expire
+     * @param int $expire
      * @param string $path
      * @param string $domain
-     * @param bool   $secure
-     * @param bool   $httpOnly
+     * @param bool $secure
+     * @param bool $httpOnly
      * @param string $sameSite
      */
     public function set(
@@ -48,12 +47,13 @@ class CookiesService extends Component
         $secure = false,
         $httpOnly = false,
         $sameSite = null
-    ) {
+    )
+    {
         if (empty($value)) {
             Craft::$app->response->cookies->remove($name);
         } else {
             $domain = empty($domain) ? Craft::$app->getConfig()->getGeneral()->defaultCookieDomain : $domain;
-            $expire = (int) $expire;
+            $expire = (int)$expire;
             if (PHP_VERSION_ID >= 70300) {
                 setcookie($name, $value, [
                     'expires' => $expire,
@@ -92,11 +92,11 @@ class CookiesService extends Component
      *
      * @param string $name
      * @param string $value
-     * @param int    $expire
+     * @param int $expire
      * @param string $path
      * @param string $domain
-     * @param bool   $secure
-     * @param bool   $httpOnly
+     * @param bool $secure
+     * @param bool $httpOnly
      * @param string $sameSite
      */
     public function setSecure(
@@ -108,12 +108,13 @@ class CookiesService extends Component
         $secure = false,
         $httpOnly = false,
         $sameSite = null
-    ) {
+    )
+    {
         if (empty($value)) {
             Craft::$app->response->cookies->remove($name);
         } else {
             $domain = empty($domain) ? Craft::$app->getConfig()->getGeneral()->defaultCookieDomain : $domain;
-            $expire = (int) $expire;
+            $expire = (int)$expire;
             $cookie = new Cookie(['name' => $name, 'value' => '']);
 
             try {
