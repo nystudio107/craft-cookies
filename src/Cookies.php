@@ -14,6 +14,7 @@ use Craft;
 use craft\base\Plugin;
 use craft\web\twig\variables\CraftVariable;
 use nystudio107\cookies\services\CookiesService;
+use nystudio107\cookies\services\ServicesTrait;
 use nystudio107\cookies\twigextensions\CookiesTwigExtension;
 use nystudio107\cookies\variables\CookiesVariable;
 use yii\base\Event;
@@ -29,6 +30,11 @@ use yii\base\Event;
  */
 class Cookies extends Plugin
 {
+    // Traits
+    // =========================================================================
+
+    use ServicesTrait;
+
     // Static Public Properties
     // =========================================================================
 
@@ -82,7 +88,7 @@ class Cookies extends Plugin
         Event::on(
             CraftVariable::class,
             CraftVariable::EVENT_INIT,
-            static function (Event $event): void {
+            static function(Event $event): void {
                 /** @var CraftVariable $variable */
                 $variable = $event->sender;
                 $variable->set('cookies', CookiesVariable::class);
