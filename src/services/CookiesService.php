@@ -79,7 +79,7 @@ class CookiesService extends Component
         string $domain = '',
         bool   $secure = false,
         bool   $httpOnly = false,
-        bool   $sameSite = false,
+        string $sameSite = 'Lax',
     ): void
     {
         if (empty($value)) {
@@ -131,8 +131,7 @@ class CookiesService extends Component
             }
 
             if (
-                $cookie
-                && !empty($cookie->value)
+                !empty($cookie->value)
                 && $data !== false
             ) {
                 $result = unserialize(base64_decode($data), ['allowed_classes' => false]);

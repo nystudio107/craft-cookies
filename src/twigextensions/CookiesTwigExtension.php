@@ -51,9 +51,9 @@ class CookiesTwigExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('setCookie', fn(string $name = "", string $value = "", int $expire = 0, string $path = "/", string $domain = "", bool $secure = false, bool $httpOnly = false, bool $sameSite = false) => $this->setCookie($name, $value, $expire, $path, $domain, $secure, $httpOnly, $sameSite)),
+            new TwigFunction('setCookie', fn(string $name = "", string $value = "", int $expire = 0, string $path = "/", string $domain = "", bool $secure = false, bool $httpOnly = false, string $sameSite = 'Lax') => $this->setCookie($name, $value, $expire, $path, $domain, $secure, $httpOnly, $sameSite)),
             new TwigFunction('getCookie', fn($name) => $this->getCookie($name)),
-            new TwigFunction('setSecureCookie', fn(string $name = "", string $value = "", int $expire = 0, string $path = "/", string $domain = "", bool $secure = false, bool $httpOnly = false, bool $sameSite = false) => $this->setSecureCookie($name, $value, $expire, $path, $domain, $secure, $httpOnly, $sameSite)),
+            new TwigFunction('setSecureCookie', fn(string $name = "", string $value = "", int $expire = 0, string $path = "/", string $domain = "", bool $secure = false, bool $httpOnly = false, string $sameSite = 'Lax') => $this->setSecureCookie($name, $value, $expire, $path, $domain, $secure, $httpOnly, $sameSite)),
             new TwigFunction('getSecureCookie', fn($name) => $this->getSecureCookie($name)),
         ];
     }
@@ -103,7 +103,7 @@ class CookiesTwigExtension extends AbstractExtension
         string $domain = "",
         bool   $secure = false,
         bool   $httpOnly = false,
-        bool   $sameSite = false,
+        string $sameSite = 'Lax',
     ): void
     {
         Cookies::$plugin->cookies->setSecure(
