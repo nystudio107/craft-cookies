@@ -36,8 +36,9 @@ class CookiesService extends Component
         string $domain = '',
         bool   $secure = false,
         bool   $httpOnly = false,
-        bool   $sameSite = false,
-    ): void {
+        string $sameSite = 'Lax',
+    ): void
+    {
         if (empty($value)) {
             Craft::$app->response->cookies->remove($name);
         } else {
@@ -79,7 +80,8 @@ class CookiesService extends Component
         bool   $secure = false,
         bool   $httpOnly = false,
         bool   $sameSite = false,
-    ): void {
+    ): void
+    {
         if (empty($value)) {
             Craft::$app->response->cookies->remove($name);
         } else {

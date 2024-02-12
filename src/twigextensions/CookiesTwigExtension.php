@@ -38,9 +38,9 @@ class CookiesTwigExtension extends AbstractExtension
     public function getFilters(): array
     {
         return [
-            new TwigFilter('setCookie', fn(string $name = "", string $value = "", int $expire = 0, string $path = "/", string $domain = "", bool $secure = false, bool $httpOnly = false, bool $sameSite = false) => $this->setCookie($name, $value, $expire, $path, $domain, $secure, $httpOnly, $sameSite)),
+            new TwigFilter('setCookie', fn(string $name = "", string $value = "", int $expire = 0, string $path = "/", string $domain = "", bool $secure = false, bool $httpOnly = false, string $sameSite = 'Lax') => $this->setCookie($name, $value, $expire, $path, $domain, $secure, $httpOnly, $sameSite)),
             new TwigFilter('getCookie', fn($name) => $this->getCookie($name)),
-            new TwigFilter('setSecureCookie', fn(string $name = "", string $value = "", int $expire = 0, string $path = "/", string $domain = "", bool $secure = false, bool $httpOnly = false, bool $sameSite = false) => $this->setSecureCookie($name, $value, $expire, $path, $domain, $secure, $httpOnly, $sameSite)),
+            new TwigFilter('setSecureCookie', fn(string $name = "", string $value = "", int $expire = 0, string $path = "/", string $domain = "", bool $secure = false, bool $httpOnly = false, string $sameSite = 'Lax') => $this->setSecureCookie($name, $value, $expire, $path, $domain, $secure, $httpOnly, $sameSite)),
             new TwigFilter('getSecureCookie', fn($name) => $this->getSecureCookie($name)),
         ];
     }
@@ -69,8 +69,9 @@ class CookiesTwigExtension extends AbstractExtension
         string $domain = "",
         bool   $secure = false,
         bool   $httpOnly = false,
-        bool   $sameSite = false,
-    ): void {
+        string $sameSite = 'Lax',
+    ): void
+    {
         Cookies::$plugin->cookies->set(
             $name,
             $value,
@@ -103,7 +104,8 @@ class CookiesTwigExtension extends AbstractExtension
         bool   $secure = false,
         bool   $httpOnly = false,
         bool   $sameSite = false,
-    ): void {
+    ): void
+    {
         Cookies::$plugin->cookies->setSecure(
             $name,
             $value,

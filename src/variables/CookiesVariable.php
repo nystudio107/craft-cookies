@@ -32,8 +32,9 @@ class CookiesVariable
         string $domain = "",
         bool   $secure = false,
         bool   $httpOnly = false,
-        bool   $sameSite = false,
-    ): void {
+        string $sameSite = 'Lax',
+    ): void
+    {
         Cookies::$plugin->cookies->set(
             $name,
             $value,
@@ -66,7 +67,8 @@ class CookiesVariable
         bool   $secure = false,
         bool   $httpOnly = false,
         bool   $sameSite = false,
-    ): void {
+    ): void
+    {
         Cookies::$plugin->cookies->setSecure(
             $name,
             $value,
