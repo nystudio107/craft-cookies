@@ -41,8 +41,9 @@ class CookiesVariable
         $domain = "",
         $secure = false,
         $httpOnly = false,
-        $sameSite = null
-    ) {
+        $sameSite = 'Lax'
+    )
+    {
         Cookies::$plugin->cookies->set(
             $name,
             $value,
@@ -87,8 +88,9 @@ class CookiesVariable
         $domain = "",
         $secure = false,
         $httpOnly = false,
-        $sameSite = null
-    ) {
+        $sameSite = 'Lax'
+    )
+    {
         Cookies::$plugin->cookies->setSecure(
             $name,
             $value,

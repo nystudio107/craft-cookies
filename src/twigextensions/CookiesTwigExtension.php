@@ -80,8 +80,9 @@ class CookiesTwigExtension extends Twig_Extension
         $domain = "",
         $secure = false,
         $httpOnly = false,
-        $sameSite = null
-    ) {
+        $sameSite = 'Lax'
+    )
+    {
         Cookies::$plugin->cookies->set(
             $name,
             $value,
@@ -126,8 +127,9 @@ class CookiesTwigExtension extends Twig_Extension
         $domain = "",
         $secure = false,
         $httpOnly = false,
-        $sameSite = null
-    ) {
+        $sameSite = 'Lax'
+    )
+    {
         Cookies::$plugin->cookies->setSecure(
             $name,
             $value,
