@@ -24,7 +24,6 @@ use Twig\TwigFunction;
  */
 class CookiesTwigExtension extends AbstractExtension
 {
-
     /**
      * Return our Twig Extension name
      */
@@ -70,9 +69,8 @@ class CookiesTwigExtension extends AbstractExtension
         string $domain = "",
         bool   $secure = false,
         bool   $httpOnly = false,
-        bool   $sameSite = false
-    ): void
-    {
+        bool   $sameSite = false,
+    ): void {
         Cookies::$plugin->cookies->set(
             $name,
             $value,
@@ -104,9 +102,8 @@ class CookiesTwigExtension extends AbstractExtension
         string $domain = "",
         bool   $secure = false,
         bool   $httpOnly = false,
-        bool   $sameSite = false
-    ): void
-    {
+        bool   $sameSite = false,
+    ): void {
         Cookies::$plugin->cookies->setSecure(
             $name,
             $value,

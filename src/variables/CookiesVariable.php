@@ -21,7 +21,6 @@ use nystudio107\cookies\Cookies;
  */
 class CookiesVariable
 {
-
     /**
      * Set a cookie
      */
@@ -33,9 +32,8 @@ class CookiesVariable
         string $domain = "",
         bool   $secure = false,
         bool   $httpOnly = false,
-        bool   $sameSite = false
-    ): void
-    {
+        bool   $sameSite = false,
+    ): void {
         Cookies::$plugin->cookies->set(
             $name,
             $value,
@@ -67,9 +65,8 @@ class CookiesVariable
         string $domain = "",
         bool   $secure = false,
         bool   $httpOnly = false,
-        bool   $sameSite = false
-    ): void
-    {
+        bool   $sameSite = false,
+    ): void {
         Cookies::$plugin->cookies->setSecure(
             $name,
             $value,

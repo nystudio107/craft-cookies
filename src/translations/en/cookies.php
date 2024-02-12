@@ -14,5 +14,5 @@
  */
 return [
     'Cookies' => 'Cookies',
-    '{name} plugin loaded' => '{name} plugin loaded'
+    '{name} plugin loaded' => '{name} plugin loaded',
 ];
