@@ -1,12 +1,10 @@
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nystudio107/craft-cookies/badges/quality-score.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-cookies/?branch=v1) [![Code Coverage](https://scrutinizer-ci.com/g/nystudio107/craft-cookies/badges/coverage.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-cookies/?branch=v1) [![Build Status](https://scrutinizer-ci.com/g/nystudio107/craft-cookies/badges/build.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-cookies/build-status/v1) [![Code Intelligence Status](https://scrutinizer-ci.com/g/nystudio107/craft-cookies/badges/code-intelligence.svg?b=v1)](https://scrutinizer-ci.com/code-intelligence)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nystudio107/craft-cookies/badges/quality-score.png?b=v4)](https://scrutinizer-ci.com/g/nystudio107/craft-cookies/?branch=v4) [![Code Coverage](https://scrutinizer-ci.com/g/nystudio107/craft-cookies/badges/coverage.png?b=v4)](https://scrutinizer-ci.com/g/nystudio107/craft-cookies/?branch=v4) [![Build Status](https://scrutinizer-ci.com/g/nystudio107/craft-cookies/badges/build.png?b=v4)](https://scrutinizer-ci.com/g/nystudio107/craft-cookies/build-status/v4) [![Code Intelligence Status](https://scrutinizer-ci.com/g/nystudio107/craft-cookies/badges/code-intelligence.svg?b=v4)](https://scrutinizer-ci.com/code-intelligence)
 
 # Cookies plugin for Craft CMS 4.x
 
 A simple plugin for setting and getting cookies from within [Craft CMS](http://craftcms.com) templates.
 
 ![Screenshot](./docs/docs/resources/img/plugin-logo.png)
-
-Related: [Cookies for Craft 2.x](https://github.com/nystudio107/cookies)
 
 ## Requirements
 
