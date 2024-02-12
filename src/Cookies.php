@@ -25,8 +25,6 @@ use yii\base\Event;
  * @author    nystudio107
  * @package   Cookies
  * @since     1.1.0
- *
- * @property  CookiesService cookies
  */
 class Cookies extends Plugin
 {
