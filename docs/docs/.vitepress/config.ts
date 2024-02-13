@@ -34,10 +34,10 @@ export default defineConfig({
       {text: 'Changelog', link: 'https://nystudio107.com/plugins/cookies/changelog'},
       {text: 'Issues', link: 'https://github.com/nystudio107/craft-cookies/issues'},
       {
-        text: 'v1', items: [
+        text: 'v4', items: [
           {text: 'v5', link: 'https://nystudio107.com/docs/cookies/'},
           {text: 'v4', link: '/'},
-          {text: 'v1', link: 'https://nystudio107.com/docs/cookies/v4/'},
+          {text: 'v1', link: 'https://nystudio107.com/docs/cookies/v1/'},
         ],
       },
     ]
