@@ -1,23 +1,21 @@
 <?php
 
 /**
- * Cookies plugin for Craft CMS 3.x
+ * Cookies plugin for Craft CMS
  *
  * @link      https://nystudio107.com/
- * @copyright Copyright (c) 2017 nystudio107
+ * @copyright Copyright (c) nystudio107
  * @license   MIT License https://opensource.org/licenses/MIT
  */
 
 namespace nystudio107\cookies;
 
-use nystudio107\cookies\services\CookiesService;
-use nystudio107\cookies\twigextensions\CookiesTwigExtension;
-use nystudio107\cookies\variables\CookiesVariable;
-
 use Craft;
 use craft\base\Plugin;
 use craft\web\twig\variables\CraftVariable;
-
+use nystudio107\cookies\services\ServicesTrait;
+use nystudio107\cookies\twigextensions\CookiesTwigExtension;
+use nystudio107\cookies\variables\CookiesVariable;
 use yii\base\Event;
 
 /**
@@ -26,11 +24,14 @@ use yii\base\Event;
  * @author    nystudio107
  * @package   Cookies
  * @since     1.1.0
- *
- * @property  CookiesService    cookies
  */
 class Cookies extends Plugin
 {
+    // Traits
+    // =========================================================================
+
+    use ServicesTrait;
+
     /**
      * @var Cookies
      */
@@ -54,20 +55,8 @@ class Cookies extends Plugin
      */
     public $hasCpSettings = false;
 
-    // Static Methods
+    // Public Methods
     // =========================================================================
-
-    /**
-     * @inheritdoc
-     */
-    public function __construct($id, $parent = null, array $config = [])
-    {
-        $config['components'] = [
-            'cookies' => CookiesService::class,
-        ];
-
-        parent::__construct($id, $parent, $config);
-    }
 
     /**
      * @inheritdoc
@@ -81,7 +70,7 @@ class Cookies extends Plugin
         Event::on(
             CraftVariable::class,
             CraftVariable::EVENT_INIT,
-            function (Event $event) {
+            function(Event $event) {
                 /** @var CraftVariable $variable */
                 $variable = $event->sender;
                 $variable->set('cookies', CookiesVariable::class);

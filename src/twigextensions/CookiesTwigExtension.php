@@ -1,18 +1,19 @@
 <?php
 
 /**
- * Cookies plugin for Craft CMS 3.x
+ * Cookies plugin for Craft CMS
  *
  * @link      https://nystudio107.com/
- * @copyright Copyright (c) 2017 nystudio107
+ * @copyright Copyright (c) nystudio107
  * @license   MIT License https://opensource.org/licenses/MIT
  */
 
 namespace nystudio107\cookies\twigextensions;
 
 use nystudio107\cookies\Cookies;
-
-use Craft;
+use Twig_Extension;
+use Twig_SimpleFilter;
+use Twig_SimpleFunction;
 
 /**
  * Cookies twig extension
@@ -21,9 +22,8 @@ use Craft;
  * @package   Cookies
  * @since     1.1.0
  */
-class CookiesTwigExtension extends \Twig_Extension
+class CookiesTwigExtension extends Twig_Extension
 {
-
     /**
      * Return our Twig Extension name
      *
@@ -40,10 +40,10 @@ class CookiesTwigExtension extends \Twig_Extension
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter('setCookie', [$this, 'setCookie']),
-            new \Twig_SimpleFilter('getCookie', [$this, 'getCookie']),
-            new \Twig_SimpleFilter('setSecureCookie', [$this, 'setSecureCookie']),
-            new \Twig_SimpleFilter('getSecureCookie', [$this, 'getSecureCookie']),
+            new Twig_SimpleFilter('setCookie', [$this, 'setCookie']),
+            new Twig_SimpleFilter('getCookie', [$this, 'getCookie']),
+            new Twig_SimpleFilter('setSecureCookie', [$this, 'setSecureCookie']),
+            new Twig_SimpleFilter('getSecureCookie', [$this, 'getSecureCookie']),
         ];
     }
 
@@ -53,10 +53,10 @@ class CookiesTwigExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('setCookie', [$this, 'setCookie']),
-            new \Twig_SimpleFunction('getCookie', [$this, 'getCookie']),
-            new \Twig_SimpleFunction('setSecureCookie', [$this, 'setSecureCookie']),
-            new \Twig_SimpleFunction('getSecureCookie', [$this, 'getSecureCookie']),
+            new Twig_SimpleFunction('setCookie', [$this, 'setCookie']),
+            new Twig_SimpleFunction('getCookie', [$this, 'getCookie']),
+            new Twig_SimpleFunction('setSecureCookie', [$this, 'setSecureCookie']),
+            new Twig_SimpleFunction('getSecureCookie', [$this, 'getSecureCookie']),
         ];
     }
 
@@ -65,11 +65,11 @@ class CookiesTwigExtension extends \Twig_Extension
      *
      * @param string $name
      * @param string $value
-     * @param int    $expire
+     * @param int $expire
      * @param string $path
      * @param string $domain
-     * @param bool   $secure
-     * @param bool   $httpOnly
+     * @param bool $secure
+     * @param bool $httpOnly
      * @param string $sameSite
      */
     public function setCookie(
@@ -80,7 +80,7 @@ class CookiesTwigExtension extends \Twig_Extension
         $domain = "",
         $secure = false,
         $httpOnly = false,
-        $sameSite = null
+        $sameSite = 'Lax'
     ) {
         Cookies::$plugin->cookies->set(
             $name,
@@ -111,11 +111,11 @@ class CookiesTwigExtension extends \Twig_Extension
      *
      * @param string $name
      * @param string $value
-     * @param int    $expire
+     * @param int $expire
      * @param string $path
      * @param string $domain
-     * @param bool   $secure
-     * @param bool   $httpOnly
+     * @param bool $secure
+     * @param bool $httpOnly
      * @param string $sameSite
      */
     public function setSecureCookie(
@@ -126,7 +126,7 @@ class CookiesTwigExtension extends \Twig_Extension
         $domain = "",
         $secure = false,
         $httpOnly = false,
-        $sameSite = null
+        $sameSite = 'Lax'
     ) {
         Cookies::$plugin->cookies->setSecure(
             $name,

@@ -1,5 +1,5 @@
 ---
-title: Cookies plugin for Craft CMS 3.x
+title: Cookies plugin for Craft CMS
 description: Documentation for the Cookies plugin. The Cookies plugin allows for setting and getting cookies from within Craft CMS templates
 ---
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nystudio107/craft-cookies/badges/quality-score.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-cookies/?branch=v1) [![Code Coverage](https://scrutinizer-ci.com/g/nystudio107/craft-cookies/badges/coverage.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-cookies/?branch=v1) [![Build Status](https://scrutinizer-ci.com/g/nystudio107/craft-cookies/badges/build.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-cookies/build-status/v1) [![Code Intelligence Status](https://scrutinizer-ci.com/g/nystudio107/craft-cookies/badges/code-intelligence.svg?b=v1)](https://scrutinizer-ci.com/code-intelligence)

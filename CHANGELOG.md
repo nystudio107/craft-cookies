@@ -1,5 +1,19 @@
 # Cookies Changelog
 
+## 1.1.16 - 2024.02.12
+### Added
+* Added `ServicesTrait` for the plugin service component registration
+* Add `phpstan` and `ecs` code linting
+* Add `code-analysis.yaml` GitHub action
+
+### Changed
+* Updated docs to use node 20 & a new sitemap plugin
+* PHPstan code cleanup
+* ECS code cleanup
+
+### Fixed
+* Fixed an issue where the `samesite` option defaulted to a `bool` when it should have defaulted to the string `Lax`
+
 ## 1.1.15 - 2021.06.18
 ### Added
 * Build docs via GitHub Actions CI
