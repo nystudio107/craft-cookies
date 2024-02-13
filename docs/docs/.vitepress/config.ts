@@ -3,7 +3,7 @@ import {defineConfig} from 'vitepress'
 export default defineConfig({
   title: 'Cookies Plugin',
   description: 'Documentation for the Cookies plugin',
-  base: '/docs/cookies/v4/',
+  base: '/docs/cookies/',
   lang: 'en-US',
   head: [
     ['meta', {content: 'https://github.com/nystudio107', property: 'og:see_also',}],
@@ -18,7 +18,7 @@ export default defineConfig({
     ],
     logo: '/img/plugin-logo.svg',
     editLink: {
-      pattern: 'https://github.com/nystudio107/craft-cookies/edit/develop-v4/docs/docs/:path',
+      pattern: 'https://github.com/nystudio107/craft-cookies/edit/develop-v5/docs/docs/:path',
       text: 'Edit this page on GitHub'
     },
     algolia: {
@@ -34,10 +34,10 @@ export default defineConfig({
       {text: 'Changelog', link: 'https://nystudio107.com/plugins/cookies/changelog'},
       {text: 'Issues', link: 'https://github.com/nystudio107/craft-cookies/issues'},
       {
-        text: 'v1', items: [
-          {text: 'v5', link: 'https://nystudio107.com/docs/cookies/'},
-          {text: 'v4', link: '/'},
-          {text: 'v1', link: 'https://nystudio107.com/docs/cookies/v4/'},
+        text: 'v5', items: [
+          {text: 'v5', link: '/'},
+          {text: 'v4', link: 'https://nystudio107.com/docs/cookies/v4/'},
+          {text: 'v1', link: 'https://nystudio107.com/docs/cookies/v1/'},
         ],
       },
     ]
