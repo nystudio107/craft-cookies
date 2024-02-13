@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Cookies plugin for Craft CMS 3.x
+ * Cookies plugin for Craft CMS
  *
  * @link      https://nystudio107.com/
- * @copyright Copyright (c) 2017 nystudio107
+ * @copyright Copyright (c) nystudio107
  * @license   MIT License https://opensource.org/licenses/MIT
  */
 
@@ -21,7 +21,6 @@ use nystudio107\cookies\Cookies;
  */
 class CookiesVariable
 {
-
     /**
      * Set a cookie
      */
@@ -33,9 +32,8 @@ class CookiesVariable
         string $domain = "",
         bool   $secure = false,
         bool   $httpOnly = false,
-        bool   $sameSite = false
-    ): void
-    {
+        string $sameSite = 'Lax',
+    ): void {
         Cookies::$plugin->cookies->set(
             $name,
             $value,
@@ -67,9 +65,8 @@ class CookiesVariable
         string $domain = "",
         bool   $secure = false,
         bool   $httpOnly = false,
-        bool   $sameSite = false
-    ): void
-    {
+        string $sameSite = 'Lax',
+    ): void {
         Cookies::$plugin->cookies->setSecure(
             $name,
             $value,

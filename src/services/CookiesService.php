@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Cookies plugin for Craft CMS 3.x
+ * Cookies plugin for Craft CMS
  *
  * @link      https://nystudio107.com/
- * @copyright Copyright (c) 2017 nystudio107
+ * @copyright Copyright (c) nystudio107
  * @license   MIT License https://opensource.org/licenses/MIT
  */
 
@@ -36,9 +36,8 @@ class CookiesService extends Component
         string $domain = '',
         bool   $secure = false,
         bool   $httpOnly = false,
-        bool   $sameSite = false
-    ): void
-    {
+        string $sameSite = 'Lax',
+    ): void {
         if (empty($value)) {
             Craft::$app->response->cookies->remove($name);
         } else {
@@ -50,7 +49,7 @@ class CookiesService extends Component
                     'domain' => $domain,
                     'secure' => $secure,
                     'httponly' => $httpOnly,
-                    'samesite' => $sameSite
+                    'samesite' => $sameSite,
                 ]);
             } else {
                 setcookie($name, $value, ['expires' => $expire, 'path' => $path, 'domain' => $domain, 'secure' => $secure, 'httponly' => $httpOnly]);
@@ -79,9 +78,8 @@ class CookiesService extends Component
         string $domain = '',
         bool   $secure = false,
         bool   $httpOnly = false,
-        bool   $sameSite = false
-    ): void
-    {
+        string $sameSite = 'Lax',
+    ): void {
         if (empty($value)) {
             Craft::$app->response->cookies->remove($name);
         } else {
@@ -131,8 +129,7 @@ class CookiesService extends Component
             }
 
             if (
-                $cookie
-                && !empty($cookie->value)
+                !empty($cookie->value)
                 && $data !== false
             ) {
                 $result = unserialize(base64_decode($data), ['allowed_classes' => false]);
