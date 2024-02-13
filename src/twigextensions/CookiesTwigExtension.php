@@ -70,8 +70,7 @@ class CookiesTwigExtension extends AbstractExtension
         bool   $secure = false,
         bool   $httpOnly = false,
         string $sameSite = 'Lax',
-    ): void
-    {
+    ): void {
         Cookies::$plugin->cookies->set(
             $name,
             $value,
@@ -104,8 +103,7 @@ class CookiesTwigExtension extends AbstractExtension
         bool   $secure = false,
         bool   $httpOnly = false,
         string $sameSite = 'Lax',
-    ): void
-    {
+    ): void {
         Cookies::$plugin->cookies->setSecure(
             $name,
             $value,
