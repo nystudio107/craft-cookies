@@ -24,7 +24,10 @@ export default defineConfig({
     algolia: {
       appId: 'FM0B4KJI1X',
       apiKey: 'a7665c2c6a31d3a94c5883f7f9c787db',
-      indexName: 'cookies'
+      indexName: 'cookies',
+      searchParameters: {
+        facetFilters: ["version:v5"],
+      },
     },
     lastUpdatedText: 'Last Updated',
     sidebar: [],
